@@ -27,3 +27,5 @@ Route::middleware([
 });
 
 Route::get('/home',[HomeController::class,'redirect']);
+Route::get('/allproduct',[HomeController::class,'allproduct']);
+
