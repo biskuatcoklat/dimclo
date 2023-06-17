@@ -30,4 +30,11 @@ Route::middleware([
 Route::get('/home',[HomeController::class,'redirect']);
 Route::get('/allproduct',[HomeController::class,'allproduct']);
 Route::get('/viewcategory',[AdminController::class,'view_category']);
-
+Route::post('/addcategory',[AdminController::class,'add_category']);
+Route::get('/deletecategory/{id}',[AdminController::class,'delete_category']);
+Route::get('/tampilproduct',[AdminController::class,'tampilproduct']);
+Route::get('/addproduct',[AdminController::class,'add_product']);
+Route::post('/addlogicproduct',[AdminController::class,'addlogicproduct']);
+Route::get('/editproduct/{id}',[AdminController::class,'edit_product']);
+Route::post('/editlogicproduct',[AdminController::class,'editlogicproduct']);
+Route::get('/deleteproduct/{id}',[AdminController::class,'delete_product']);
