@@ -61,7 +61,7 @@ class AdminController extends Controller
         return redirect('/tampilproduct')->with('message','Product Success Di Tambahkan');
     }
 
-    public function editproduct($id)
+    public function edit_product($id)
     {
         $product = Product::find($id);
         $category= Category::all();

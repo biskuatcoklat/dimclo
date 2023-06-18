@@ -36,5 +36,9 @@ Route::get('/tampilproduct',[AdminController::class,'tampilproduct']);
 Route::get('/addproduct',[AdminController::class,'add_product']);
 Route::post('/addlogicproduct',[AdminController::class,'addlogicproduct']);
 Route::get('/editproduct/{id}',[AdminController::class,'edit_product']);
-Route::post('/editlogicproduct',[AdminController::class,'editlogicproduct']);
+Route::post('/editlogicproduct/{id}',[AdminController::class,'editlogicproduct']);
 Route::get('/deleteproduct/{id}',[AdminController::class,'delete_product']);
+
+Route::get('/productdetail/{id}',[HomeController::class,'product_detail']);
+Route::get('/showcart',[HomeController::class,'showcart']);
+Route::post('/addcart/{id}',[HomeController::class,'addcart']);
