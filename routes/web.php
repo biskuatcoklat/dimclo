@@ -38,7 +38,14 @@ Route::post('/addlogicproduct',[AdminController::class,'addlogicproduct']);
 Route::get('/editproduct/{id}',[AdminController::class,'edit_product']);
 Route::post('/editlogicproduct/{id}',[AdminController::class,'editlogicproduct']);
 Route::get('/deleteproduct/{id}',[AdminController::class,'delete_product']);
+Route::get('/order',[AdminController::class,'order']);
 
 Route::get('/productdetail/{id}',[HomeController::class,'product_detail']);
 Route::get('/showcart',[HomeController::class,'showcart']);
 Route::post('/addcart/{id}',[HomeController::class,'addcart']);
+Route::get('/hapuscart/{id}',[HomeController::class,'hapuscart']);
+Route::get('/ordercash',[HomeController::class,'ordercash']);
+Route::get('/showorder',[HomeController::class,'showorder']);
+Route::get('/cancelorder/{id}',[HomeController::class,'cancelorder']);
+Route::get('/deleteorder/{id}',[HomeController::class,'deleteorder']);
+Route::get('/contact',[HomeController::class,'contact']);

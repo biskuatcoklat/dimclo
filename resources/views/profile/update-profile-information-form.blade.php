@@ -59,6 +59,12 @@
             <x-input-error for="name" class="mt-2" />
         </div>
 
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="alamat" value="{{ __('Alamat') }}" />
+            <x-input id="alamat" type="text" class="mt-1 block w-full" wire:model.defer="state.alamat" autocomplete="alamat" />
+            <x-input-error for="alamat" class="mt-2" />
+        </div>
+
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
             <x-label for="email" value="{{ __('Email') }}" />

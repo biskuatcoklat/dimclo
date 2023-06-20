@@ -86,7 +86,7 @@
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $products->image }}</td>
                                     <td>
                                         <a onclick="return confirm('anda yakin ingin menghapus product?')" href="/deleteproduct/{{ $products->id }}" data-id="{{ $products->id }}"  class="bg-red-500 text-white hover:bg-red-700 p-2 rounded-md">Delete</a>
-                                        <a href="/editproduct/{{ $products->id }}" data-id="{{ $products->id }}"  class="bg-yellow-500 text-white hover:bg-yellow-700 p-2 rounded-md">Edit</a>
+
                                     </td>
                                 </tr>
                                 @endforeach

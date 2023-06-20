@@ -31,10 +31,10 @@
         <a href="/showcart" class="text-black-600 hover:text-red-600 p-1.5 md:p-4 font-medium"
         >Cart</a
         >
-        <a href="#" class="text-black-600 hover:text-red-600 p-1.5 md:p-4 font-medium"
+        <a href="/showorder" class="text-black-600 hover:text-red-600 p-1.5 md:p-4 font-medium"
         >Order</a
         >
-        <a href="#" class="text-black-600 hover:text-red-600 p-1.5 md:p-4 font-medium"
+        <a href="/contact" class="text-black-600 hover:text-red-600 p-1.5 md:p-4 font-medium"
         >Contact</a
         >
         @if (Route::has('login'))

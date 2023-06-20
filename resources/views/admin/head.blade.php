@@ -10,12 +10,12 @@
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
         .font-family-karla { font-family: karla; }
-        .bg-sidebar { background: #3d68ff; }
-        .cta-btn { color: #3d68ff; }
-        .upgrade-btn { background: #1947ee; }
-        .upgrade-btn:hover { background: #0038fd; }
-        .active-nav-link { background: #1947ee; }
-        .nav-item:hover { background: #1947ee; }
-        .account-link:hover { background: #3d68ff; }
+        .bg-sidebar { background: #e90e0e; }
+        .cta-btn { color: #e90e0e; }
+        .upgrade-btn { background: #e90e0e; }
+        .upgrade-btn:hover { background: #e90e0e; }
+        .active-nav-link { background: #d32000; }
+        .nav-item:hover { background: #e90e0e; }
+        .account-link:hover { background: #e90e0e; }
     </style>
 </head>

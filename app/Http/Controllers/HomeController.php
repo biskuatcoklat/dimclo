@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -114,5 +115,80 @@ class HomeController extends Controller
         {
             return redirect('login');
         }
+    }
+
+    public function hapuscart($id)
+    {
+        $cart=Cart::find($id);
+        $cart->delete();
+        return redirect('/showcart')->with('message','Barang Berhasil Dihapus');
+    }
+
+    public function ordercash()
+    {
+        $user = Auth::user();
+        $userid=$user->id;
+
+        $data=Cart::where('user_id','=',$userid)->get();
+        foreach ($data as $datas)
+        {
+            $order = new Order();
+            $order->name=$datas->name;
+            $order->email=$datas->email;
+            $order->nohp=$datas->nohp;
+            $order->alamat=$datas->alamat;
+            $order->user_id=$datas->user_id;
+            $order->product_title=$datas->product_title;
+            $order->price=$datas->price;
+            $order->quantity=$datas->quantity;
+            $order->image=$datas->image;
+            $order->product_id=$datas->product_id;
+            $order->payment_status='Cash';
+            $order->delivery_status='Sedang Proses';
+
+            $order->save();
+
+            $cart_id=$datas->id;
+            $cart=Cart::find($cart_id);
+            $cart->delete();
+
+        }
+        return redirect()->back()->with('message','Pesanan Telah Diterima dan akan diproses, Terima kasih telah berbelanja di Dimclo');
+
+    }
+
+    public function showorder()
+    {
+        if(Auth::id())
+        {
+            $user=Auth::user();
+            $userid=$user->id;
+            $order = Order::where('user_id','=',$userid)->get();
+            return view('home.order',compact('order'));
+        }
+        else
+        {
+            return redirect('login');
+        }
+    }
+
+    public function cancelorder($id)
+    {
+        $order = Order::find($id);
+        $order->delivery_status='Pesanan Dibatalkan';
+        $order->save();
+        return redirect()->back();
+    }
+
+    public function deleteorder($id)
+    {
+        $order = Order::find($id);
+        $order->delete();
+        return redirect()->back();
+    }
+
+    public function contact()
+    {
+        return view('home.contact');
     }
 }

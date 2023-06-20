@@ -42,10 +42,10 @@
                 }
                 </script>
 
-                <a href="/showcart" class="text-black-600 active-nav-link font-bold text-red-600 hover:text-red-600 p-1.5 md:p-4"
+                <a href="/showcart" class="text-black-600 font-medium  hover:text-red-600 p-1.5 md:p-4"
                 >Cart</a
                 >
-                <a href="/showorder" class="text-black-600 hover:text-red-600 p-1.5 md:p-4 font-medium"
+                <a href="/order" class="text-black-600 active-nav-link font-bold text-red-600 hover:text-red-600 p-1.5 md:p-4"
                 >Order</a
                 >
                 <a href="/contact" class="text-black-600 hover:text-red-600 p-1.5 md:p-4 font-medium"
@@ -95,8 +95,13 @@
 
       <!--End Hero Section-->
         <div class="container">
-            <h2 class="text-3xl text-center text-gray-600">Hi {{ Auth::user()->name }}, This Your Cart</h2>
+            <h2 class="text-3xl text-center text-gray-600">Hi {{ Auth::user()->name }}, This Your Order</h2>
             <div class="bg-white overflow-auto mt-4">
+                @if(session()->has('message'))
+                    <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+                        <span class="font-medium">{{ session()->get('message'); }}</span>
+                    </div>
+                    @endif
                 <table class="text-left w-full border-collapse">
 
                     <thead class="bg-gray-50 dark:bg-gray-700">
@@ -105,6 +110,8 @@
                             <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Product</th>
                             <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Quantity</th>
                             <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Price</th>
+                            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Payment status</th>
+                            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Delivery status</th>
                             <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Image</th>
                             <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Aksi</th>
                         </tr>
@@ -113,34 +120,30 @@
                         @php
                             $no=1;
                         @endphp
-                        <?php $totalprice=0; ?>
-                        @foreach ($cart as $carts)
+                        @foreach ($order as $orders)
                         <tr class="hover:bg-grey-lighter">
                             <td class="py-4 px-6 border-b border-grey-light">{{ $no++ }}</td>
-                            <td class="py-4 px-6 border-b border-grey-light">{{ $carts->product_title }}</td>
-                            <td class="py-4 px-6 border-b border-grey-light">{{ $carts->quantity }}</td>
-                            <td class="py-4 px-6 border-b border-grey-light">{{ $carts->price }}</td>
-                            <td class="py-4 px-6 border-b border-grey-light"><img src='product/{{ $carts->image }}'style="width: 10%; height: 30px"></td>
-                            <?php $totalprice=$totalprice + $carts->price ?>
+                            <td class="py-4 px-6 border-b border-grey-light">{{ $orders->product_title }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">{{ $orders->quantity }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">{{ $orders->price }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">{{ $orders->payment_status }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">{{ $orders->delivery_status }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light"><img src='product/{{ $orders->image }}'style="width: 30%; height: 30px"></td>
+
                             <td>
-                                <a onclick="return confirm('anda yakin ingin menghapus cart?')" href="/hapuscart/{{ $carts->id }}" data-id="{{ $carts->id }}"  class="bg-red-500 text-white hover:bg-red-700 p-2 rounded-md">Delete</a>
+                                @if ($orders->delivery_status='Sedang Proses')
+                                    <a onclick="return confirm('anda yakin ingin membatalkan pesanan ini?')" href="/cancelorder/{{ $orders->id }}" class="bg-red-500  text-gray-50 hover:bg-red-700 p-2 rounded-m">cancel</a>
+                                @else
+                                <p style="color: blue">Not Allowed</p>
+                                @endif
+                                <a href="/downloadpdf/{{ $orders->id }}" class="bg-yellow-500  text-gray-50 hover:bg-yellow-700 p-2 rounded-m">Invoice</a>
+                                <a onclick="return confirm('anda yakin ingin menghapus pesanan ini?')" href="/hapusorder/{{ $orders->id }}" class="bg-green-500  text-gray-50 hover:bg-green-700 p-2 rounded-m">Delete</a>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
-                    <tbody>
-                        <tr style="font-weight: bold">
-                            <td>Total Rp.{{ $totalprice }}</td>
-                        </tr>
-                    </tbody>
                 </table>
             </div>
-
-            <div class="text-center">
-            <h1 style="font-size: 25px; padding bottom: 15 px;">Proses Pembayaran</h1><br>
-            <a onclick="return confirm('Apakah Alamat Anda Sudah Sesuai? {{ Auth::user()->alamat }}? Jika tidak sesuai sialhkan ubah di menu profile')" href="/ordercash" class="bg-red-500 text-white hover:bg-red-700 p-2 rounded-md">Cash On Delivery</a>
-            <a href="{{ url('stripe',$totalprice) }}" class="bg-blue-500 text-white hover:bg-blue-700 p-2 rounded-md">Credit Card</a>
-         </div>
         </div>
 
       <div class="my-20 mt-96">

@@ -21,14 +21,14 @@
             <div class="mt-2">
                 <a
                 href="/"
-                class="text-black-600  font-normal hover:text-red-600 p-1.5 md:p-4"
+                class="text-black-600  font-medium hover:text-red-600 p-1.5 md:p-4"
                 >Home</a
                 >
 
                 <div class="relative inline-block">
-                <a href="/allproduct" class="text-black-600 active-nav-link text-red-600 hover:text-red-600 p-1.5 md:p-4 font-bold" onclick="toggleDropdown1()">Product</a>
+                <a href="/allproduct" class="text-black-600 font-medium hover:text-red-600 p-1.5 md:p-4" onclick="toggleDropdown1()">Product</a>
                     <div id="dropdown" class="absolute bg-white text-gray-700 pt-2 hidden">
-                        <a href="/allproduct" class="hover:bg-gray-100 active-nav-link">All Product</a>
+                        <a href="/allproduct" class="hover:bg-gray-100">All Product</a>
                         <a href="#" class="hover:bg-gray-100">Category 2</a>
                         <a href="#" class="hover:bg-gray-100">Category 3</a>
                     </div>
@@ -42,13 +42,13 @@
                 }
                 </script>
 
-                <a href="/showcart" class="text-black-600 hover:text-red-600 p-1.5 md:p-4 font-medium"
+                <a href="/showcart" class="text-black-600 font-medium  hover:text-red-600 p-1.5 md:p-4"
                 >Cart</a
                 >
-                <a href="/showorder" class="text-black-600 hover:text-red-600 p-1.5 md:p-4 font-medium"
+                <a href="/order" class="text-black-600 font-medium hover:text-red-600 p-1.5 md:p-4"
                 >Order</a
                 >
-                <a href="/contact" class="text-black-600 hover:text-red-600 p-1.5 md:p-4 font-medium"
+                <a href="/contact" class="text-black-600 active-nav-link font-bold text-red-600 hover:text-red-600 p-1.5 md:p-4"
                 >Contact</a
                 >
                 @if (Route::has('login'))
@@ -94,61 +94,22 @@
       <!--start Hero Section-->
 
       <!--End Hero Section-->
-      <div class="container">
-            <h2 class="text-3xl text-center text-gray-600">Product detail</h2>
-        </div>
+        <div class="container">
+            <h2 class="text-3xl text-center text-gray-600">Contact</h2>
+            <div class="bg-white overflow-auto mt-4">
 
-      <div class="my-20">
-
-        <div class=" bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-                <img class="rounded-t-lg" src="/product/{{ $product->image }}" alt="" />
-            </a>
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $product->title }}</h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $product->description }}</p>
-                <div class="flex my-3">
-                    @if ($product->discount_price!=null)
-                    <p class="text-gray-600 py-2 rounded-full shadow-md px-2">
-                    Rp.{{ $product->discount_price }}
-                    </p><br>
-                    <p class="text-gray-600 py-2 line-through rounded-full shadow-md px-2">
-                    Rp.{{ $product->price }}
-                    </p>
-                    @else
-                    <p class="text-gray-600 py-2 rounded-full shadow-md px-2">
-                    Rp.{{ $product->price }}
-                    </p>
-                    @endif
-                </div><br>
-                <form action="/addcart/{{ $product->id }}" method="post">
-                    @csrf
-                    <div class="row">
-                        <div>
-                            <label for="">Quantity</label>
-                            <input type="number" name="quantity" value="1" min="1" style="width:100px" class="w-full px-5 py-1 text-gray-700 bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 rounded">
-                        </div>
-                    </div><br>
-                    <div class="col-md-2">
-                        <input type="submit" value="add to cart" class="px-4 py-1 text-white font-light tracking-wider bg-gray-900 rounded">
-                    </div>
-                </form>
             </div>
         </div>
+
+      <div class="my-20 mt-96">
+
+
 
       </div>
 
       <!--Food Items Section-->
 
 
-
-
-
-
-
-      <!-- Footer start -->
         @include('home.footer')
       <!-- Footer end -->
     </div>
