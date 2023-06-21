@@ -25,18 +25,6 @@
             <i class="fas fa-align-left mr-3"></i>
             Order
         </a>
-        <a href="tabs.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-            <i class="fas fa-tablet-alt mr-3"></i>
-            Tabbed Content
-        </a>
-        <a href="calendar.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-            <i class="fas fa-calendar mr-3"></i>
-            Calendar
-        </a>
-        <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-            <i class="fas fa-cogs mr-3"></i>
-            Support
-        </a>
         <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
             <i class="fas fa-user mr-3"></i>
             My Account

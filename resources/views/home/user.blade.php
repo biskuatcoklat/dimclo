@@ -12,7 +12,7 @@
   <body>
     <div class="container h-8 mx-auto p-5">
       <!--Navigation section awal-->
-        @include('home.navbar');
+        @include('home.navbar')
       <!--Navigation section end-->
 
       <!--start Hero Section-->

@@ -1,8 +1,8 @@
 <div class="my-20">
         <div class="flex flex-row justify-between mb-4">
-          <h2 class="text-3xl text-gray-600">Mens Style</h2>
+          <h2 class="text-3xl text-gray-600">New Product</h2>
           <a
-            href="#"
+            href="/allproduct"
             class="text-xl flex flex-row hover:text-red-600 text-gray-600"
             >Selengkapnya
             <svg
@@ -64,7 +64,7 @@
               />
             </a>
             <div class="p-5">
-              <h3 class="text-gray-600"><a href="#">{{ $products->title }}</a></h3>
+              <h3 class="text-gray-600"><a href="/productdetail/{{$products->id}}">{{ $products->title }}</a></h3>
               <div class="flex flex-row my-3"></div>
               <div class="flex flex-row my-3">
                 <div
@@ -75,19 +75,19 @@
               @if($products->discount_price!=null)
               <div class="flex flex-row justify-between my-3">
 
-                <p class="text-gray-600 py-2 rounded-full shadow-md px-2">
+                <p class="text-gray-600 py-4  rounded-full shadow-md">
                   Rp.{{ $products->discount_price }}
                 </p><br>
-                <p class="text-gray-600 py-2 line-through rounded-full shadow-md px-2">
+                <p class="text-gray-600 py-4 line-through rounded-full shadow-md">
                   Rp.{{ $products->price }}
                 </p>
                 @else
-                <p class="text-gray-600 py-2 line-through rounded-full shadow-md px-2">
+                <p class="text-gray-600 py-4 line-through rounded-full shadow-md">
                   Rp.{{ $products->price }}
                 </p>
                 @endif
                 <a
-                  href="#"
+                  href="/productdetail/{{$products->id}}"
                   class="bg-gradient-to-r from-red-500 to-red-700 rounded-full py-2 px-4 text-gray-50 text-sm"
                 >
                   <svg

@@ -29,6 +29,9 @@ Route::middleware([
 
 Route::get('/home',[HomeController::class,'redirect']);
 Route::get('/allproduct',[HomeController::class,'allproduct']);
+Route::get('/male_style',[HomeController::class,'malestyle']);
+Route::get('/female_style',[HomeController::class,'femalestyle']);
+
 Route::get('/viewcategory',[AdminController::class,'view_category']);
 Route::post('/addcategory',[AdminController::class,'add_category']);
 Route::get('/deletecategory/{id}',[AdminController::class,'delete_category']);

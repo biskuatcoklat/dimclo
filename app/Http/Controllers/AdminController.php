@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -100,4 +101,9 @@ class AdminController extends Controller
         return redirect('/tampilproduct')->with('message','Product Success Di Hapus');
     }
 
+    public function order()
+    {
+        $order = Order::paginate(10);
+        return view('admin.order',compact('order'));
+    }
 }

@@ -21,7 +21,7 @@
             <div class="mt-2">
                 <a
                 href="/"
-                class="text-black-600  font-medium hover:text-red-600 p-1.5 md:p-4"
+                class="text-black-600  font-normal hover:text-red-600 p-1.5 md:p-4"
                 >Home</a
                 >
 
@@ -95,7 +95,7 @@
 
       <!--End Hero Section-->
       <div class="container">
-            <h2 class="text-3xl text-center text-gray-600">All Product</h2>
+            <h2 class="text-3xl text-center text-gray-600">Male Style</h2>
         </div>
 
       <div class="my-20">

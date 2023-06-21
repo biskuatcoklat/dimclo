@@ -26,11 +26,11 @@
                 >
 
                 <div class="relative inline-block">
-                <a href="/allproduct" class="text-black-600 font-medium hover:text-red-600 p-1.5 md:p-4" onclick="toggleDropdown1()">Product</a>
+                <a href="#" class="text-black-600 font-medium hover:text-red-600 p-1.5 md:p-4" onclick="toggleDropdown1()">Product</a>
                     <div id="dropdown" class="absolute bg-white text-gray-700 pt-2 hidden">
                         <a href="/allproduct" class="hover:bg-gray-100">All Product</a>
-                        <a href="#" class="hover:bg-gray-100">Category 2</a>
-                        <a href="#" class="hover:bg-gray-100">Category 3</a>
+                        <a href="/male_style" class="hover:bg-gray-100">Male Style</a>
+                        <a href="/female_style" class="hover:bg-gray-100">Female Style</a>
                     </div>
                 </div>
 
@@ -45,7 +45,7 @@
                 <a href="/showcart" class="text-black-600 font-medium  hover:text-red-600 p-1.5 md:p-4"
                 >Cart</a
                 >
-                <a href="/order" class="text-black-600 font-medium hover:text-red-600 p-1.5 md:p-4"
+                <a href="/showorder" class="text-black-600 font-medium hover:text-red-600 p-1.5 md:p-4"
                 >Order</a
                 >
                 <a href="/contact" class="text-black-600 active-nav-link font-bold text-red-600 hover:text-red-600 p-1.5 md:p-4"
@@ -95,17 +95,26 @@
 
       <!--End Hero Section-->
         <div class="container">
-            <h2 class="text-3xl text-center text-gray-600">Contact</h2>
-            <div class="bg-white overflow-auto mt-4">
-
+            <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+                <h2 class="mb-4 text-4xl tracking-tight font-bold text-center text-gray-900 dark:text-white">Contact Us</h2>
+                <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Dapat Permasalahan issue? ingin mengirimkan feedback sebuah feature? Silahkan hubungi kami.</p>
+                <form action="#" class="space-y-8">
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
+                        <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="name@flowbite.com" required>
+                    </div>
+                    <div>
+                        <label for="subject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Subject</label>
+                        <input type="text" id="subject" class="block p-3 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" placeholder="Let us know how we can help you" required>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
+                        <textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a comment..."></textarea>
+                    </div>
+                    <button type="submit" class="py-3 px-5 text-sm font-medium text-center rounded-lg bg-blue-500 text-white sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Send message</button>
+                </form>
             </div>
         </div>
-
-      <div class="my-20 mt-96">
-
-
-
-      </div>
 
       <!--Food Items Section-->
 

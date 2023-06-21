@@ -26,11 +26,11 @@
                 >
 
                 <div class="relative inline-block">
-                <a href="/allproduct" class="text-black-600 font-medium hover:text-red-600 p-1.5 md:p-4" onclick="toggleDropdown1()">Product</a>
+                <a href="#" class="text-black-600 font-medium hover:text-red-600 p-1.5 md:p-4" onclick="toggleDropdown1()">Product</a>
                     <div id="dropdown" class="absolute bg-white text-gray-700 pt-2 hidden">
                         <a href="/allproduct" class="hover:bg-gray-100">All Product</a>
-                        <a href="#" class="hover:bg-gray-100">Category 2</a>
-                        <a href="#" class="hover:bg-gray-100">Category 3</a>
+                        <a href="/male_style" class="hover:bg-gray-100">Male Style</a>
+                        <a href="#" class="hover:bg-gray-100">Female Style</a>
                     </div>
                 </div>
 

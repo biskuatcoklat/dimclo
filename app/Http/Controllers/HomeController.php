@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +23,16 @@ class HomeController extends Controller
         $usertype = Auth::user()->usertype;
         if($usertype==1)
         {
-            return view('admin.home');
+            $totalproduct= Product::all()->count();
+            $totalorder= Order::all()->count();
+            $totaluser = User::all()->count();
+            $order = Order::all();
+            $keuntungan = 0;
+            foreach($order as $orders)
+            {
+                $keuntungan = $keuntungan + $orders->price;
+            }
+            return view('admin.home',compact('totalproduct','totalorder','totaluser','keuntungan'));
         }
         else
         {
@@ -35,6 +45,18 @@ class HomeController extends Controller
     {
         $product = Product::all();
         return view('home.allproduct',compact('product'));
+    }
+
+    public function malestyle()
+    {
+        $product = Product::all()->where('category','=','Male');
+        return view('home.malestyle',compact('product'));
+    }
+
+    public function femalestyle()
+    {
+        $product = Product::all()->where('category','=','Female');
+        return view('home.femalestyle',compact('product'));
     }
 
     public function product_detail($id)

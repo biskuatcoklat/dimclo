@@ -8,9 +8,7 @@
         <p
         class="text-center text-gray-600 tracking-wide md:self-start md:text-left"
         >
-        Our online appearance provides you healthy life with organic energy.
-        Nature can reduce your chemical risk. We ready to serve organic
-        items.
+        Dapatkan diskon menarik di setiap produk di toko kami, dan nikmati bebas ongkir disetiap pembelian produk kami
         </p>
         <a
         href="#"

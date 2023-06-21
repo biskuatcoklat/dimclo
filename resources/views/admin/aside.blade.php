@@ -15,17 +15,9 @@
             <i class="fas fa-table mr-3"></i>
             Product
         </a>
-        <a href="forms.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+        <a href="/order" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
             <i class="fas fa-align-left mr-3"></i>
             Order
-        </a>
-        <a href="tabs.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-            <i class="fas fa-tablet-alt mr-3"></i>
-            Tabbed Content
-        </a>
-        <a href="calendar.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-            <i class="fas fa-calendar mr-3"></i>
-            Calendar
         </a>
     </nav>
 
