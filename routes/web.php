@@ -27,7 +27,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/home',[HomeController::class,'redirect']);
+Route::get('/home',[HomeController::class,'redirect'])->middleware('auth','verified');
 Route::get('/allproduct',[HomeController::class,'allproduct']);
 Route::get('/male_style',[HomeController::class,'malestyle']);
 Route::get('/female_style',[HomeController::class,'femalestyle']);
@@ -52,3 +52,4 @@ Route::get('/showorder',[HomeController::class,'showorder']);
 Route::get('/cancelorder/{id}',[HomeController::class,'cancelorder']);
 Route::get('/deleteorder/{id}',[HomeController::class,'deleteorder']);
 Route::get('/contact',[HomeController::class,'contact']);
+Route::get('/downloadpdf/{id}',[HomeController::class,'downloadpdf']);

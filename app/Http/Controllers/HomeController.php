@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\PDF;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -165,7 +167,7 @@ class HomeController extends Controller
             $order->quantity=$datas->quantity;
             $order->image=$datas->image;
             $order->product_id=$datas->product_id;
-            $order->payment_status='Cash';
+            $order->payment_status='Cash On Delivery';
             $order->delivery_status='Sedang Proses';
 
             $order->save();
@@ -207,6 +209,13 @@ class HomeController extends Controller
         $order = Order::find($id);
         $order->delete();
         return redirect()->back();
+    }
+
+    public function downloadpdf($id)
+    {
+        $order = Order::find($id);
+        $pdf = PDF::loadview('home.pdf',compact('order'))->setPaper('a4', 'landscape');
+        return $pdf->download('invoice.pdf');
     }
 
     public function contact()
