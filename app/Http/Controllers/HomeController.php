@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\PDF;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Stripe;
 
 class HomeController extends Controller
 {
@@ -201,12 +202,6 @@ class HomeController extends Controller
         $order = Order::find($id);
         $order->delivery_status='Pesanan Dibatalkan';
         $order->save();
-        return redirect()->back();
-    }
-
-    public function deleteorder($id)
-    {
-        $order = Order::find($id);
         $order->delete();
         return redirect()->back();
     }
@@ -222,4 +217,54 @@ class HomeController extends Controller
     {
         return view('home.contact');
     }
+
+    public function transfer($totalprice)
+    {
+        return view('home.qris',compact('totalprice'));
+    }
+
+    public function cariproduct(Request $request)
+    {
+        $cariproduct = $request->cari;
+        $product=Product::where('title','LIKE',"%$cariproduct%")->orWhere('category','LIKE',"%$cariproduct%")->get();
+        return view('home.allproduct',compact('product'));
+    }
+
+    public function transferlogic(Request $request, $totalprice)
+    {
+        $user = Auth::user();
+        $userid=$user->id;
+
+        $data=Cart::where('user_id','=',$userid)->get();
+
+        foreach ($data as $datas)
+        {
+            $order = new Order();
+            $order->name=$datas->name;
+            $order->email=$datas->email;
+            $order->nohp=$datas->nohp;
+            $order->alamat=$datas->alamat;
+            $order->user_id=$datas->user_id;
+            $order->product_title=$datas->product_title;
+            $order->price=$datas->price;
+            $order->quantity=$datas->quantity;
+            $order->image=$datas->image;
+            $order->product_id=$datas->product_id;
+
+            $order->payment_status='Sudah Dibayar';
+            $order->delivery_status='Sedang Proses';
+
+            $order->save();
+
+            $cart_id=$datas->id;
+            $cart=Cart::find($cart_id);
+            $cart->delete();
+
+        }
+
+        //Session::flash('success', 'Pembayaran Berhasil!');
+
+        return redirect('/showorder')->with('success', 'Pembayaran Berhasil!');
+    }
+
 }

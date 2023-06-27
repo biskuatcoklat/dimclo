@@ -61,6 +61,7 @@
                                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Image</th>
                                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Payment</th>
                                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Delivery</th>
+                                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -70,7 +71,7 @@
                                 @foreach ($order as $orders)
                                 <tr class="hover:bg-grey-lighter">
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $no++ }}</td>
-                                    <td class="py-4 px-6 border-b border-grey-light">{{ $orders->nama }}</td>
+                                    <td class="py-4 px-6 border-b border-grey-light">{{ $orders->name }}</td>
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $orders->email }}</td>
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $orders->nohp }}</td>
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $orders->alamat }}</td>
@@ -80,6 +81,18 @@
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $orders->image }}</td>
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $orders->payment_status }}</td>
                                     <td class="py-4 px-6 border-b border-grey-light">{{ $orders->delivery_status }}</td>
+                                     <td class="py-4 px-6 border-b border-grey-light">
+                                                    @if ($orders->delivery_status=='Sedang Proses')
+
+                                                    <a onclick="return confirm('anda yakin barang sudah terkirim')" href="/terkirim/{{ $orders->id }}" class="py-3 px-5 text-sm font-medium text-center rounded-lg bg-blue-500 text-white sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Terkirim</a>
+
+                                                    @else
+
+                                                    <p>Terkirim</p>
+
+                                                    @endif
+
+                                                </td>
                                 </tr>
                                 @endforeach
                             </tbody>

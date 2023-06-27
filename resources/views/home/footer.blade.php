@@ -7,7 +7,7 @@
         <div class="md:flex md:justify-between">
           <div class="mb-6 md:mb-0">
               <a href="/" class="flex items-center">
-                  <img src="images/logo3.png" width="100%"  alt="Logo" />
+                  <img src="../images/logo3.png" width="100%"  alt="Logo" />
 
               </a>
           </div>

@@ -42,6 +42,7 @@ Route::get('/editproduct/{id}',[AdminController::class,'edit_product']);
 Route::post('/editlogicproduct/{id}',[AdminController::class,'editlogicproduct']);
 Route::get('/deleteproduct/{id}',[AdminController::class,'delete_product']);
 Route::get('/order',[AdminController::class,'order']);
+Route::get('/terkirim/{id}',[AdminController::class,'terkirim']);
 
 Route::get('/productdetail/{id}',[HomeController::class,'product_detail']);
 Route::get('/showcart',[HomeController::class,'showcart']);
@@ -50,6 +51,8 @@ Route::get('/hapuscart/{id}',[HomeController::class,'hapuscart']);
 Route::get('/ordercash',[HomeController::class,'ordercash']);
 Route::get('/showorder',[HomeController::class,'showorder']);
 Route::get('/cancelorder/{id}',[HomeController::class,'cancelorder']);
-Route::get('/deleteorder/{id}',[HomeController::class,'deleteorder']);
 Route::get('/contact',[HomeController::class,'contact']);
 Route::get('/downloadpdf/{id}',[HomeController::class,'downloadpdf']);
+Route::get('/transfer/{totalprice}',[HomeController::class,'transfer']);
+Route::post('/transfer/{totalprice}',[HomeController::class,'transferlogic'])->name('transfer.post');;
+Route::get('/cariproduct',[HomeController::class,'cariproduct']);

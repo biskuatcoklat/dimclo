@@ -137,7 +137,7 @@
                                 <p style="color: blue">Not Allowed</p>
                                 @endif
                                 <a href="/downloadpdf/{{ $orders->id }}" class="bg-yellow-500  text-gray-50 hover:bg-yellow-700 p-2 rounded-m">Invoice</a>
-                                <a onclick="return confirm('anda yakin ingin menghapus pesanan ini?')" href="/hapusorder/{{ $orders->id }}" class="bg-green-500  text-gray-50 hover:bg-green-700 p-2 rounded-m">Delete</a>
+
                             </td>
                         </tr>
                         @endforeach

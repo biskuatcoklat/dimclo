@@ -106,4 +106,14 @@ class AdminController extends Controller
         $order = Order::paginate(10);
         return view('admin.order',compact('order'));
     }
+
+    public function terkirim($id)
+    {
+        $order = Order::find($id);
+        $order->delivery_status="Terkirim";
+        $order->payment_status="lunas";
+        $order->save();
+
+        return redirect('/order')->with('message','Product Berhasil Terkirim');
+    }
 }

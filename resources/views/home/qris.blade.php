@@ -42,13 +42,13 @@
                 }
                 </script>
 
-                <a href="/showcart" class="text-black-600 active-nav-link font-bold text-red-600 hover:text-red-600 p-1.5 md:p-4"
+                <a href="/showcart" class="text-black-600 active-nav-link font-bold text-red-600  hover:text-red-600 p-1.5 md:p-4"
                 >Cart</a
                 >
-                <a href="/showorder" class="text-black-600 hover:text-red-600 p-1.5 md:p-4 font-medium"
+                <a href="/showorder" class="text-black-600 font-medium hover:text-red-600 p-1.5 md:p-4"
                 >Order</a
                 >
-                <a href="/contact" class="text-black-600 hover:text-red-600 p-1.5 md:p-4 font-medium"
+                <a href="/contact" class="text-black-600 font-medium hover:text-red-600 p-1.5 md:p-4"
                 >Contact</a
                 >
                 @if (Route::has('login'))
@@ -95,59 +95,20 @@
 
       <!--End Hero Section-->
         <div class="container">
-            <h2 class="text-3xl text-center text-gray-600">Hi {{ Auth::user()->name }}, This Your Cart</h2>
-            <div class="bg-white overflow-auto mt-4">
-                <table class="text-left w-full border-collapse">
+            <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+                <h2 class="mb-4 text-4xl tracking-tight font-bold text-center text-gray-900 dark:text-white">Total {{ $totalprice }}</h2>
+                <img src="../images/qr.jpg" class="" alt="">
+                <form action="{{ route('transfer.post',$totalprice) }}" method="post" class="space-y-8">
+                    <div>
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bukti Pemabayaran</label>
+                        <input type="file" id="file" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" name="image">
+                    </div>
 
-                    <thead class="bg-gray-50 dark:bg-gray-700">
-                        <tr>
-                            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">No</th>
-                            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Product</th>
-                            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Quantity</th>
-                            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Price</th>
-                            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Image</th>
-                            <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @php
-                            $no=1;
-                        @endphp
-                        <?php $totalprice=0; ?>
-                        @foreach ($cart as $carts)
-                        <tr class="hover:bg-grey-lighter">
-                            <td class="py-4 px-6 border-b border-grey-light">{{ $no++ }}</td>
-                            <td class="py-4 px-6 border-b border-grey-light">{{ $carts->product_title }}</td>
-                            <td class="py-4 px-6 border-b border-grey-light">{{ $carts->quantity }}</td>
-                            <td class="py-4 px-6 border-b border-grey-light">{{ $carts->price }}</td>
-                            <td class="py-4 px-6 border-b border-grey-light"><img src='product/{{ $carts->image }}'style="width: 10%; height: 30px"></td>
-                            <?php $totalprice=$totalprice + $carts->price ?>
-                            <td>
-                                <a onclick="return confirm('anda yakin ingin menghapus cart?')" href="/hapuscart/{{ $carts->id }}" data-id="{{ $carts->id }}"  class="bg-red-500 text-white hover:bg-red-700 p-2 rounded-md">Delete</a>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    <tbody>
-                        <tr style="font-weight: bold">
-                            <td>Total Rp.{{ $totalprice }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+
+                    <button type="submit" class="py-3 px-5 text-sm font-medium text-center rounded-lg bg-blue-500 text-white sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Kirim</button>
+                </form>
             </div>
-
-            <div class="text-center">
-            <h1 style="font-size: 25px; padding bottom: 15 px;">Proses Pembayaran</h1><br>
-            <a onclick="return confirm('Apakah Alamat Anda Sudah Sesuai? {{ Auth::user()->alamat }}? Jika tidak sesuai sialhkan ubah di menu profile')" href="/ordercash" class="bg-red-500 text-white hover:bg-red-700 p-2 rounded-md">Cash On Delivery</a>
-            <a href="{{ url('transfer',$totalprice) }}" class="bg-blue-500 text-white hover:bg-blue-700 p-2 rounded-md">Transfer bank</a>
-         </div>
         </div>
-
-      <div class="my-20 mt-96">
-
-
-
-      </div>
 
       <!--Food Items Section-->
 
